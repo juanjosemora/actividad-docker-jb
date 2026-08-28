@@ -34,5 +34,5 @@ jobs:
       - name: Descargar código
         uses: actions/checkout@v3
 
-      - name: Simular construcción de contenedor
+      - name: Simular empaquetado del contenedor
         run: echo "Construcción y empaquetado exitoso"
