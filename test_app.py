@@ -1,7 +1,7 @@
 import pytest
 import importlib
 
-# Carga dinámica para evitar errores de nombres de archivo en español o inglés
+# Importa el archivo de tu aplicación sample_app.py o aplicación_de_muestra.py
 try:
     app_module = importlib.import_module("sample_app")
 except ImportError:
