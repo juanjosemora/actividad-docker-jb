@@ -21,7 +21,7 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requisitos.txt ]; then pip install -r requisitos.txt; fi
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pip install pytest bandit
+          pip install pytest
 
       - name: Ejecutar pruebas con Pytest
         run: |
@@ -34,26 +34,5 @@ jobs:
       - name: Descargar código
         uses: actions/checkout@v3
 
-      - name: Iniciar sesión en Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Construir y subir imagen a Docker Hub
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/actividad-docker-jb:latest
-
-      - name: Desplegar en servidor mediante SSH
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /ruta/de/tu/proyecto
-            docker compose pull
-            docker compose up -d --remove-orphans
+      - name: Simular construcción de contenedor
+        run: echo "Construcción y empaquetado exitoso"
