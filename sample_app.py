@@ -7,4 +7,5 @@ def home():
     return jsonify({"message": "API activa y desplegada correctamente con CI/CD"})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    # Defensa: Desactivar el modo debug
+    app.run(host='0.0.0.0', port=5000, debug=False)
